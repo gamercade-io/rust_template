@@ -1,28 +1,36 @@
-use gamercade_rs::{prelude as gc, GraphicsParameters};
+// This is some boilerplate code to get you started.
+// We recommend taking a look at "game.rs" and building from there.
 
-#[no_mangle]
-/// Handle all of your initialization logic here.
-pub extern "C" fn init() {
-    gc::console_log("Hello, world!")
+use std::mem::MaybeUninit;
+
+mod game;
+use game::MyGame;
+
+pub trait Game {
+    fn init() -> Self;
+    fn update(&mut self);
+    fn draw(&self);
 }
 
+static mut GAME: MaybeUninit<MyGame> = MaybeUninit::uninit();
+
 #[no_mangle]
-/// Handle all of your game state logic here
-pub extern "C" fn update() {
-    // Print a message if the user presses the A button.
-    // This defaults to the U key on the keyboard.
-    if Some(true) == gc::button_a_pressed(0) {
-        gc::console_log("Pressed A.")
+pub extern "C" fn init() {
+    unsafe {
+        GAME.write(MyGame::init());
     }
 }
 
 #[no_mangle]
-/// Handle all of your rendering code here
-pub extern "C" fn draw() {
-    // Clear screen function takes a GraphicsParameters as a parameter,
-    // so let's make one.
-    let clear_color = GraphicsParameters::default().color_index(0);
+pub extern "C" fn update() {
+    unsafe {
+        GAME.assume_init_mut().update();
+    }
+}
 
-    // Now we can clear the screen.
-    gc::clear_screen(clear_color);
+#[no_mangle]
+pub extern "C" fn draw() {
+    unsafe {
+        GAME.assume_init_ref().draw();
+    }
 }
