@@ -6,7 +6,7 @@ This project is already configured to output the .wasm binaries via the `.cargo/
 
 Learn more about [Gamercade](https://gamercade.io), or head over to the main project repository: [gamercade_console](https://github.com/gamercade-io/gamercade_console)
 
-## How to butput a .wasm File:
+## How to build a .wasm File:
 
 1. If you don't already have it, install the wasm target by running `rustup target add wasm32-unknown-unknown`.
 1. Invoke `cargo build` or `cargo build --release` as you would normally. This project will default to building for target `wasm32-unknown-unknown`
