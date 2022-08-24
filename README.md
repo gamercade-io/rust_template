@@ -2,7 +2,7 @@
 
 A way to get up and running with [Gamercade](https://gamercade.io) quick and easy. Comes bundled with the [gamercade_rs](https://crates.io/crates/gamercade_rs) crate.
 
-This project is already configured to output the .wasm binaries via the `.cargo/config` file.
+This project is already configured to output the `.wasm` binaries via the `.cargo/config` file.
 
 Learn more about [Gamercade](https://gamercade.io), or head over to the main project repository: [gamercade_console](https://github.com/gamercade-io/gamercade_console)
 
