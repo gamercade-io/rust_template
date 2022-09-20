@@ -9,4 +9,4 @@ crate-type = ["cdylib"]
 
 # Feel free to add as many dependencies as you like
 [dependencies]
-gamercade_rs = "0.1.1"
+gamercade_rs = "0.1.2"

@@ -1,6 +1,5 @@
 use gamercade_rs::{
-    prelude::{self as gc, set_pixel},
-    GraphicsParameters,
+    prelude::{self as gc, set_pixel, GraphicsParameters},
 };
 
 // Our game state. Edit this as you wish.
